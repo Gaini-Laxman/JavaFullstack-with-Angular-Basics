@@ -1,0 +1,354 @@
+===============
+Microservices
+==============
+1) Monolith Architecture
+2) Challenges with monolith architecture
+3) Microservices Introduction
+4) Microservices Architecture
+5) Pros & Cons with Microservices
+6) Service Registry (Eureka Server)
+7) Admin Server 
+8) Zipkin Server
+9) Interservice Communication
+10) FeignClient
+11) Load Balancing (Ribbon)
+12) API Gateway (Spring Cloud Gateway)
+13) Circuit Breaker (Resillence)
+14) Spring Boot with Redis Cache
+15) Spring Boot with Apache Kafka
+16) Spring Boot with Reactive Programming
+17) Spring Cloud Config Server
+18) How to connect with Multiple Databases
+
+==========
+Security
+==========
+19) How to secure our REST API
+20) Basic Auth
+21) JDBC Authentication
+22) UserDetailsService
+23) OAuth2.0
+24) JWT (JSON Web Tokens)
+
+======================
+Monolith Architecture
+=====================
+
+-> Single application contains all functionalities
+
+--------------------------------
+Dis - Advantages with Monolith
+--------------------------------
+1) Single Point Of Failure
+2) Re-Deployment
+3) Maintenence
+4) Stick to single technology
+
+### To overcome challenges with Monolith, companies are preffering Microservices Architecture ###
+
+
+==============
+Microservices
+==============
+
+-> Microservices is not a programming language
+
+-> Microservices is not a Framework
+
+#### Microservices is an archtectural design pattern ####
+
+### Microservices Project means it contains collection of REST APIs
+
+-> Every REST API is responsible for one functionality
+
+------------------------------
+Advantages with Microservices
+------------------------------
+
+1) Easy maintence
+2) High Availability
+3) Fast Development
+4) Quick Releases
+5) Technology Independence
+
+-------------------------------
+Challenges with Microservices
+--------------------------------
+
+1) Bounded Context
+
+2) Lot of configurations
+
+3) Visibility
+
+
+-> Deciding the no.of microservices (REST APIS) required for our project.
+
+-> In every microservices we have to write some common configurations
+
+	Ex: Datasource, SMTP, Kafka, Redis etc....
+
+
+-> Team members will not get whole project knowledge
+
+
+
+===========================
+Microservices Architecture
+===========================
+
+1) Service Registry : It will maintain list of apis available in our project.
+
+			a) Name of the api
+			b) Status of the api
+			c) URL of the api
+
+Note: We can use Eureka Server as a service registry.
+
+2) Admin Server : It will provide Dashboard to monitor and manage all apis actuators at one place.
+
+
+3) Zipkin Server : It is used for distributed tracing. It will provide information about request processing time.
+
+4) Api Gateway : It will act as entry point for all backend apis. It will act as mediator between incoming requests and backend apis.
+
+			-> Zuul Proxy (Deprecated)
+			-> Spring Cloud Gateway (Open source)
+			-> ApiGee (Google, commercial)
+
+
+5) ConfigServer : It is used to seperate configuration properties from our application.
+
+
+6) Redis Server: It is used to maintain distributed cache. It is used to reduce no.of db calls from our application to DB.
+
+7) Apache Kafka : It is a message broker. It is used to develop Event Driven Microservices.
+
+
+
+
+1) Service Registry (Eureka)
+
+2) Admin Server 
+
+3) Zipkin Server
+
+4) Greet-API
+
+5) Welcome-API
+
+6) Interservice Communication (FeignClient)
+
+7) Load Balancer using Ribbon
+
+
+
+============
+API Gateway
+===========
+
+-> It will act as entrypoint for all the apis
+
+-> It acts as mediator between UI and Backend APIs
+
+============
+Redis Cache
+============
+
+1) What is Cache ?
+
+2) Why we need to go for Cache ?
+
+3) What is Redis ?
+
+4) Spring Boot with Redis Integration 
+
+
+=> Cache is a temporary storage
+
+=> Cache will represent data in key-value format
+
+=> By using Cache data, we can reduce no.of db calls from our application.
+
+Note: DB call is always costly (it will take more time to execute)
+
+=> By using Cache data (Cache Memory) we can increase performance of the application.
+
+##### Redis Cache is one of the most famous Cache available in Market #####
+
+=> The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker.
+
+
+=> Spring Boot provided below starter to communicate with Redis Server
+
+				### springboot-starter-redis ###
+
+=> We will use below components to communicate with Redis Server
+
+
+1) JedisConnectionFactory : It represents connection with Redis Server
+
+2) RedisTemplate : It provides methods to perform operations with Redis Server
+
+3) OpsForHash: It is providing methods to peform operations based on Hash key
+
+
+put (...)
+
+get(..)
+
+entries (.)
+
+deleet(..)
+
+
+
+
+
+
+
+
+
+Key-Value
+
+KEY - EMP
+101 - Raju
+102 - Rani
+
+KEY - BOOKS
+103 - Java
+
+KEY - CITIES
+104 - Hyd
+
+
+
+
+
+
+====================
+Cloud Config Server
+====================
+
+-> It is used to seperate our application and application config properties
+
+	Ex: SMTP props, DB props, App msgs etc...
+
+-> We can externalize configuration properties by using Config Server
+
+-> We will maintain application configuration yml files in git hub repo.
+
+-> Config Server application will connect with Git Hub repo to load all ymls
+
+-> Our APIs (Microservices) will connect with config server to load yml data based on application name.
+
+Note: app name and yml file name should be same.
+
+Note: If we use config server then we no need to re-package our application when we make some changes in properties.
+
+
+==================
+Config Server App
+===================
+
+1) Create Git Repository and keep ymls files required for projects 
+
+			Note: We should keep file name as application name
+
+			app name : greet  then file name : greet.yml
+
+			app name : welcome then file name : welcome.yml
+
+
+		### Git Repo : https://github.com/ashokitschool/configuration_properties
+
+
+2) Create Spring Starter application with below dependency
+
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-config-server</artifactId>
+	</dependency>
+
+3) Write @EnableConfigServer annotation at boot start class
+
+
+@SpringBootApplication
+@EnableConfigServer
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+4) Configure below properties in application.yml file
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ashokitschool/configuration_properties
+          clone-on-start: true
+
+5) Run Config Server application
+
+=================================
+Config Server Client Development
+=================================
+
+1) Create Spring Boot application with below dependencies
+
+				a) web-starter
+				b) config-client
+				c) dev-tools
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+
+
+2) Create Rest Controller with Required methods
+
+@RestController
+public class WelcomeRestController {
+
+	@Value("${msg}")
+	private String msg;
+
+	@GetMapping("/")
+	public String getWelcomeMsg() {
+		return msg;
+	}
+}
+
+3) Configure ConfigServer url in application.yml file like below
+
+server:
+  port: 8081
+spring:
+  config:
+    import: optional:configserver:http://localhost:8080
+  application:
+    name: greet
+
+
+4) Run the application and test it.
+
+==================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+

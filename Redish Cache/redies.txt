@@ -1,0 +1,166 @@
+============
+Redis Cache
+============
+
+1) What is Cache ?
+
+2) Why we need to go for Cache ?
+
+3) What is Redis ?
+
+4) Spring Boot with Redis Integration 
+
+
+=> Cache is a temporary storage
+
+=> Cache will represent data in key-value format
+
+=> By using Cache data, we can reduce no.of db calls from our application.
+
+Note: DB call is always costly (it will take more time to execute)
+
+=> By using Cache data (Cache Memory) we can increase performance of the application.
+
+##### Redis Cache is one of the most famous Cache available in Market #####
+
+=> The open source, in-memory data store used by millions of developers as a database, cache, streaming engine, and message broker.
+
+
+=> Spring Boot provided below starter to communicate with Redis Server
+
+				### springboot-starter-redis ###
+
+=> We will use below components to communicate with Redis Server
+
+
+1) JedisConnectionFactory : It represents connection with Redis Server
+
+2) RedisTemplate : It provides methods to perform operations with Redis Server
+
+3) OpsForHash: It is providing methods to peform operations based on Hash key
+
+
+put (...)
+
+get(..)
+
+entries (.)
+
+deleet(..)
+
+===================================
+Spring Boot with Redis Integration
+===================================
+
+0) Download Redis Server
+
+Link : https://www.mediafire.com/file/ul4aeeirc8nrs2a/Redis-x64-3.0.504.rar/file
+
+-> Extract rar file and Run Redis-Server.exe and Run Redis-Client.exe
+
+
+1) Create Spring Boot application with below dependencies
+
+<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+
+2) Create binding class to represent data
+
+@Data
+public class Country implements Serializable {
+	
+	private Integer sno;
+	private String name;
+	private String countryCode;
+
+}
+
+
+3) Create Redis Config Class
+
+@Configuration
+public class RedisConfig {
+
+	@Bean
+	public JedisConnectionFactory jedisConn() {
+		JedisConnectionFactory jedis = new JedisConnectionFactory();
+		// Redis server properties
+		return jedis;
+	}
+
+	@Bean
+	public RedisTemplate<String, Country> redisTemplate() {
+		RedisTemplate<String, Country> rt = new RedisTemplate<>();
+		rt.setConnectionFactory(jedisConn());
+		return rt;
+	}
+}
+
+4) Create RestController class with Requird methods
+
+@RestController
+public class CountryRestController {
+
+	private HashOperations<String, Integer, Country> opsForHash = null;
+
+	public CountryRestController(RedisTemplate<String, Country> rt) {
+		this.opsForHash = rt.opsForHash();
+	}
+
+	@PostMapping("/country")
+	public String addCountry(@RequestBody Country country) {
+		opsForHash.put("COUNTRIES", country.getSno(), country);
+		return "Country Added";
+	}
+
+	@GetMapping("/countries")
+	public Collection<Country> getCountries() {
+		Map<Integer, Country> entries = opsForHash.entries("COUNTRIES");
+		Collection<Country> values = entries.values();
+		return values;
+	}
+
+}
+
+5) Run the application and test it using Postman.
+
+
+ 	{
+        "sno": 1,
+        "name": "India",
+        "countryCode": "+91"
+    }
+

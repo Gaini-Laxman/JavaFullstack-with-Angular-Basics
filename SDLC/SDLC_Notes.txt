@@ -1,0 +1,188 @@
+
+=========================================
+Software Development Life Cycle (SDLC)
+=========================================
+
+=> From stat to end is called as Life Cycle
+
+=> SDLC = Development + Testing + Deployment + Delivery 
+
+=> From project start to till project end is called as Software development lifeycle.
+
+=> We have several phases in SDLC
+
+
+1) Requirements Gathering
+
+2) Requirements Analysis
+
+3) Design (FDD / BRD / SRS )
+
+4) Development
+
+5) Testing
+
+6) Deployment
+
+7) Delivery
+
+8) Support (SLA - Service Line Agreement ) - 6 months
+
+====================
+SDLC Methodologies
+====================
+
+1) Waterfall (outdated)
+
+2) Agile (Most Trending)
+
+
+=======================
+Waterfall methodology
+=======================
+
+-> Linear methodology (Sequential Process)
+
+-> It is a step by step process
+
+-> After one step is completed then only we will move to next step
+
+-> Forward Direction
+
+-> Client involement is very less
+
+-> Client will see project at the end 
+
+-> requirements fixed & budget fixed
+
+
+==================
+Agile Methodolgy
+==================
+
+-> Iterative approach
+
+-> Development + Testing + Delivery - is a cyclic process
+
+-> Project will be delivered in multiple phases (Sprint)
+
+-> Client Involment will be there in every phase of the project
+
+-> Requirements are not fixed & Budget is not fixed
+
+Note: Client Satisfaction is most important factor in Agile Methodolgy
+
+
+==================
+Agile Terminogoly
+==================
+
+Product Owner : Responsible to deliver project to client (deliery head)
+
+Scrum Master : Responsibe to manage Agile Team work (Daily Tracking)
+
+Tech Lead : Seniour Resource in Team For Technical help
+
+Team Members :  Developers + Testers + DB Team + Ops Team
+
+
+
+Scrum Meeting : Daily status call ( scrum / status / standup ) - 30 mins
+
+Backlog Grooming Meeting : Meeting To identify pending works in the project
+
+Backlog Stories : Pending Stories we have created in JIRA
+
+Story : A task
+
+Story Points : Represents duration to complete a story
+
+				3 points  - 1 day
+
+				5 Points  - 2 days
+
+				8 Points  - 3 days
+
+Sprint Planning Meeting: To identify priority stories to complete
+
+Sprint : Set of stories planned to complete in given duration (2 weeks)
+
+RetroSpective meeting : Review meeting
+
+						1) What went well
+						2) What went wrong
+						3) Improvements
+						4) Lessons Learnt
+						5) Ideaz Board
+
+---------------------------------------------------------------------------
+
+To : scrummaster-mail-id
+cc : sbiproject@tcs.com
+
+Subject : Standup Call Status - Ashok
+
+Hi Steve,
+
+Today i can't join our standup call due to doctor appointment.
+
+Please find my status below
+
+yesterday : STORY 135 completed, status changed to DONE.
+
+today : I have started working on STORY 231, targeted for Tomorrow EOD.
+
+I don't have any issues.
+
+Thanks,
+Ashok.
+
+
+
+To : sbidevops@tcs.com
+
+cc: sbiproject@tcs.com
+
+Hi,
+
+Please create new git repo for our REPORTS API development
+
+Repo Name : REPORTS_API_REPO
+
+@Manager - Please approve.
+
+Thanks,
+Ashok.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+===========================
+What is Build & Deployment
+============================
+
+1) Take source code from git repo
+
+2) Compile & Package that code
+
+3) Perform Code Review
+
+4) Upload Build Artifact to Nexus
+
+5) Create Docker Image
+
+6) Create Container
+
+==========================
+Application Environments
+==========================
+
+1) DEV 
+2) SIT
+3) UAT
+4) PILOT
+5) PROD
+
+
+=> Build and Deployment process in all these environments is difficult and time taking process.
+
+=> To avoid the challenges involved in Manual Build and Deployment process we are going for JENKINS.
+
+
+========
+Jenkins
+========
+
+=> Jenkins is used to automate build and deployment process
+
+=> Jenkins is a CI CD software
+
+=> CI CD means continuous integration & Continuous deployment
+
+=> Jenkins Software developed by using Java language (To run jenkins java is mandatory).
+
+=> Jenkins Server Runs on Port : 8080
+
+
+===============
+Jenkins Setup
+===============
+
+1) Create Ubuntu VM in AWS Cloud
+
+2) Connect to Ubuntu VM using MobaXterm
+
+$ curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+    /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+$ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+    https://pkg.jenkins.io/debian binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+  
+$ sudo apt-get update
+  
+$ sudo apt-get install fontconfig openjdk-11-jre
+  
+$ sudo apt-get install jenkins
+
+$ sudo apt-get update
+
+$ sudo apt-get install jenkins
+
+
+Note: Enable 8080 port number in security group
+
+=> Access Jenkins Server using below URL
+
+	URL : http://public-ip:8080/
+
+=====================================================================================================
+
+

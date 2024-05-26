@@ -1,0 +1,14 @@
+1) WPT count string occurrence ?  
+2) what is method overloading and method Over ridding  ? 
+3)diff abstraction and interface 
+4) what is linked List ? 
+5) diff between iterator and stream ?
+6) diff between @Service and @repository annotation ? 
+7) Create a list of employee and remove duplicate record from it? 
+8) create list and get employee age ?  
+9) input= {mh, pune}, {AP,Hyderabad}  {mh, Mumbai}  output ={mh, pune, Mumbai}                  {ap.hyderabad} ? 
+10) what status are there in jira 
+11) what is spring security ? 
+12 how to write Junit test cases? 
+12) why we @Qualifire annotation ? 
+13 ) create employee list and get who is getting higher salary

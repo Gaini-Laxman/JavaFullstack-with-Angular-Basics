@@ -1,0 +1,194 @@
+===============================
+Q) What is Operating System ?
+===============================
+
+=> OS is a mediator between user and computer
+
+=> OS is mandatory to use any computer
+
+=> Using OS we can run our applications in the computer
+
+=> We have below 3 types Operating System
+
+1) Windows OS
+
+2) Linux OS
+
+3) MAC OS
+
+
+============
+Windows OS
+============
+
+=> Developed by Microsoft
+
+=> Single User OS
+
+=> It is GUI based
+
+=> It is used for personal purpose (games, movies, work)
+
+=> Less Security
+
+=> Windows OS License is commercial
+
+===========
+Linux OS
+===========
+
+=> It is free & Open source OS
+
+=> Linux is Very Secured
+
+=> Linux is Multi User Operating System
+
+=> Linux is Highly recommend OS to run Servers and Databases...
+
+=> Linux is recommended for Business Purpose
+
+=> Linux is CLI based.
+
+==============
+Linux History
+==============
+
+-> Initially we had UNIX OS
+
+-> Linus Torvalds identified some issues in UNIX OS and informed to Unix Team.
+
+-> Unix Team did not accept Linux Torvalds suggesions.
+
+-> Linus Torvalds developed his own Operating System by using Minux OS.
+
+	( Li ) nus + Mi ( nux )  ==>  Linux OS
+
+-> Linus Torvalds released Linux OS into market with free of cost along with source code.
+
+-> So many companies taken Linux OS source code and modified according to their requirement and released into market with different names those are called as Linux Distributions.
+
+		1) Ubuntu Linux
+		2) Red Hat Linux
+		3) Debian Linux
+		4) Fedora Linux
+		5) SUSE Linux
+		6) Kali Linux
+		7) Cent OS Linux
+		8) Amazon Linux
+
+Note: We have 200+ Linux Distributions.
+
+=========================
+Linux Environment Setup
+=========================
+
+1) Create AWS account ( Free Tier )
+
+2) Create EC2 instance with Amazon Linux
+
+3) Download MobaXterm Software
+
+4) Connect to EC2 Linux VM using MobaXterm
+
+
+================
+Linux Commands
+===============
+
+whoami : Displays logged in user information
+
+date: Prints today's date
+
+cal : Print current month calendar
+
+pwd : Display present working directory
+
+mkdir : Create new directory
+
+rmdir : Remove empty directory
+
+cd : change directory
+
+ls : list files
+
+touch : To create empty file
+
+cat : Create file with content & display file content
+
+	cat > filename : Create file with data (we will loose old data)
+	cat >> filename : append data at the bottom
+	cat filename : display file content
+
+
+rm : It is used to remove file
+
+mv : To rename file / directory
+
+cp : To copy data from one file to another file
+
+wc : word count (lines, words, characters)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,266 @@
+=================
+Spring Data JPA
+=================
+
+-> Spring Data JPA is one module in spring framework
+
+-> It is used to develop Persistence Layer (DB Logic)
+
+1) Java JDBC
+2) Spring JDBC
+3) Hibernate Framework
+4) Spring ORM
+5) Spring Data JPA
+
+
+
+USER_MASTER ===> UserMasterDao ==> 4 methods (insert/update/delete/select)
+
+ROLE_MASTER ===> RoleMasterDao ==> 4 methods (insert/update/delete/select)
+
+PRODUCT_DTLS ===> ProductDtlsDao ==> 4 methods (insert/update/delete/select)
+
+PAYMENT_DTLS ===> PaymentDtlsDao ==> 4 methods (insert/update/delete/select)
+
+..
+..
+
+5000 tables ====> 5000 * 4 = 20,000 methods
+
+
+Note: If we have 5000 DB tables then we have to create 5000 DAO classes. Every dao class should contain 4 common methods so it will become 20,000 methods with same logic. (This is not recommended).
+
+
+=> To avoid boiler plate code in DAO classes we can use Spring Data JPA.
+
+=> Spring Data JPA will use Hibernate framework internally.
+
+
+=============================
+Spring Data JPA Repositories
+=============================
+
+=> To simplify Persistence Layer Development Data JPA provided Repository interfaces
+
+1) CrudRepository (CRUD Ops methods)
+
+2) JpaRepository (CRUD Ops methods + sorting + pagination + QBE )
+
+
+Note: To perform DB operations we need to create an interface by extending properties from JPA repository interface.
+
+
+==========================================
+Developing First Data JPA Application
+========================================
+
+1) Create Spring Boot application with dependencies
+
+			a) data-jpa-starter
+			b) mysql-driver
+			c) project-lombok
+
+2) Configure Datasource properites in application.properties file
+
+3) Create Entity class (Java class to DB Table mapping)
+
+4) Create Repository interface by extending JPA Repository interface
+
+5) Test the application by calling Repository interface methods.
+
+------------------------------------
+
+@Data
+@Entity
+public class Book {
+
+	@Id
+	private Integer bookId;
+	private String bookName;
+	private Double bookPrice;
+}
+-----------------------------------------------------------------------
+public interface BookRepository extends CrudRepository<Book, Integer>{
+
+}
+-----------------------------------------------------------------------
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.url=jdbc:mysql://localhost:3306/sbms
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.show-sql=true
+
+------------------------------------------------------
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext ctxt =
+				SpringApplication.run(Application.class, args);
+		
+		BookRepository repo = ctxt.getBean(BookRepository.class);
+		
+		/*
+		 * Book b = new Book(); b.setBookId(101); b.setBookName("Spring");
+		 * b.setBookPrice(1000.00);
+		 * 
+		 * repo.save(b);
+		 * 
+		 * System.out.println("Record inserted.....");
+		 */
+		
+		
+		Optional<Book> findById = repo.findById(101);
+		System.out.println(findById.get());		
+		
+	}
+}
+
+======================
+CrudRepository Methods
+=======================
+
+1) save(E) : To insert & Update ( Insert + Update = Upsert )
+
+2) saveAll(Iterable) : To insert & update collection of records
+
+3) boolean existsById(ID) : To check presense of record (true/false)
+
+4) count ( ) : To get records count in table
+
+5) findById(ID) : To retrieve record based on given PK
+
+6) findAllById(Iterable ids): Retrieve records based on given PKs
+
+7) findAll () : To retrieve all records from table
+
+8) deleteById(ID) : Delete record based on given PK
+
+9) deleteAllById (Iterable ids): Delete records based on given PKs
+
+10) delete(E) : Delete record based on given Entity obj
+
+11) deleteAll(Iterable entities): Delete records based on given Entity objs
+
+12) deleteAll ( ) : Delete all records from table
+
+------------------------------------------------------------------
+
+1) findBy Methods
+
+2) Custom Queries
+
+----------------------------------------------------------
+
+=================
+Find By Methods
+=================
+
+-> findBy Methods are used to perform only select operations
+
+-> Using Non Primary Key columns also we can select records
+
+-> In findBy Methods method name is very important because based on method name JPA will construct the query for execution.
+
+Note: findBy methods should represent Entity class variables
+
+
+public interface BookRepository extends CrudRepository<Book, Integer> {
+
+	// select * from book where book_price > : price
+	public List<Book> findByBookPriceGreaterThan(Double price);
+	
+	// select * from book where book_price < : price
+	public List<Book> findByBookPriceLessThan(Double price);
+	
+	// select * from book where book_name = : bookName
+	public List<Book> findByBookName(String bookName);
+}
+
+===============
+Custom Queries
+===============
+
+-> If we want to execute our query in JPA Repo then we can go for Custom Queries
+
+-> Custom Queries we can write in 2 ways
+
+1) HQL Queries
+2) Native SQL queries
+
+Note: To represent Custom Query we are using @Query annotation.
+
+----------------------------------------------------------------------------
+public interface BookRepository extends CrudRepository<Book, Integer> {
+
+	@Query(value = "select * from book", nativeQuery = true)
+	public List<Book> getAllBooks();
+	
+	@Query("from Book")
+	public List<Book> getBooks();
+
+}
+
+=====================
+HQL Vs SQL Queries
+======================
+
+#1
+-> HQL queries are DB independent queries
+-> SQL queries are DB dependent queries
+
+#2
+-> IN HQL query, we will use entity class name & variables
+-> IN SQL query, we will use table name & column names 
+
+#3
+-> HQL query can't execute in DB directley (conversion required)
+-> SQL query can execute in DB directley
+
+
+#4
+-> Performance wise SQL queries are better
+-> Maintanence wise HQL queries are better
+
+
+Note: Every HQL query should be converted to SQL query before execution. That conversion will done by Dialect class.
+
+-> Every Database will have its own Dialect class.
+
+Ex:
+
+OracleDialect
+MySqlDialect
+DB2Dialect
+PostgresDialect etc...
+
+
+Note: Dialect class will be loaded along with DB driver class.
+
+
+SQL : Select * from book;
+HQL : from Book;
+
+SQL : select * from book where book_price=2000;
+HQL : from Book where bookPrice = 2000;
+
+SQL : select * from book where book_price >= 2000 and book_name='Spring'
+HQL : From Book where bookPrice >= 200 and bookName = 'Spring'
+
+SQL : select book_name from book;
+HQL : select bookName from Book;
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,360 @@
+================================================
+Spring Basics + Spring Boot & Microservices
+================================================
+
+================
+Pre-Requisites 
+================
+1) Core Java
+2) Adv Java ( JDBC + Servlets )
+3) Oracle (SQL)
+4) Hibernate (Basics of ORM)
+
+----------------------
+Course Content 
+----------------------
+1) Spring Core
+
+2) Spring JDBC / DAO
+
+3) Spring Boot
+
+4) Spring Data JPA
+
+5) Spring Web MVC
+
+6) RESTful Services (Spring REST)
+
+7) Spring Cloud
+
+8) Microservices
+
+9) Spring Security
+
+10) Spring Boot Integrations
+
+				- Apache kafka
+				- Redis cache
+				- Docker
+				- Unit Testing (Junit)
+				- Logging
+
+===============
+Course Details
+================
+
+Course Name : Spring Core + Spring Boot  + Microservices (SBMS)
+
+Course Code : 29-SBMS
+
+Course Duration : 2.5 to 3 Months
+
+Start Date : Today
+
+Class Timings : 5:00 PM to 7:00 PM (IST) (Mon-Sat)
+
+Course Fee : 8000 INR (Live classe) + 2000 INR (for videos - 6 months)
+
+Course Content : https://ashokitech.com/spring-boot-microservices-online-training
+
+
+====================================================================
+
+Programming Language : Java
+
+				- Language Fundamentals
+				- Syntaxes
+
+				-> Standalone apps
+
+
+Technologies : JDBC + Servlets + JSP
+
+				-> Database communication using JDBC
+				-> Servlets for web application development
+				-> JSP (Presentation logic)
+
+				=> Web applications
+
+
+Java Frameworks :  Hibernate +  Spring --> Spring Boot
+
+======================================================================
+
+1) Programming Language  (Java)
+
+2) Java Technologies (JDBC + Servlets + JSP)
+
+3) Java Frameworks ( Hibernate + Spring & Spring Boot)
+
+==================================================================
+
+
+Core Java : To develop Standalone applications
+
+JDBC : To develop persistence logic
+
+Servlets : To develop web applications
+
+JSP : To develop Presentation logic
+
+=======================
+What is Framework ?
+======================
+
+=> Framework is a semi developed / ready made software
+
+=> Frameworks will provide some common logics required for several projects development.
+
+=> Frameworks provides re-usable components (classes & interfaces)
+
+=> Frameworks will reduce burden on the developers
+
+
+=> IN Java community we are having 2 types of frameworks
+
+1) ORM frameworks  (Ex: Hibernate) - Object Relational Mapping
+
+2) Web Frameworks  (Ex: Struts) - 2001
+
+
+Note: Spring is called as Application development Framework (interface21)
+
+1st spring version came into market 2003/2004
+
+current version of Spring is 6.x
+
+
+
+-> Spring is not single framework
+
+-> Spring Framework is collection of frameworks (Modules)
+
+			Spring 1.x ---> 7 Modules
+
+			Spring 2.x ---> 6 Modules
+
+			Spring 3.x ----> 20+ Modules
+
+-> Spring Framework is versatile framework
+
+-> Spring is loosely coupled framework
+
+
+Servlets + JSP + JDBC ---> 20 Lines of code
+
+Spring --> 5 Lines
+
+SpringBoot --> 1 line
+
+
+
+
+====================
+What is Spring ?
+====================
+
+
+-> Spring is a java based application development framework
+
+-> By using spring we can develop end to end application
+
+-> Spring is developed by using JSE & JEE
+
+-> Spring framework developed by Rod Johnson
+
+-> First version of spring came into market in 2004 (Spring 1.x v)
+
+-> The current version of Spring is 6.x (2022)
+
+-> SPring is developed in modular fashion
+
+-> Spring Modules are loosely coupled
+
+-> Spring is versatile framework (it can integrate with any other framework)
+
+
+==========================
+Spring Framework Modules
+=========================
+
+1) Spring Core
+
+2) Spring Context
+
+3) Spring DAO
+
+4) Spring ORM
+
+5) Spring AOP
+
+6) Spring Web MVC
+
+7) Spring REST
+
+8) Spring Data JPA
+
+9) Spring Cloud
+
+10) Spring Security
+
+11) Spring Social
+
+12) Spring Batch ........
+
+
+============
+Spring Core
+===========
+
+-> Base module of spring framework
+
+-> Core Module providing fundamental concepts of Spring those are 
+	IOC & DI
+
+		IOC : Inversion Of Control
+		DI : Dependency Injection
+
+-> IOC & DI are used to develop classes with loosely coupling
+
+-> IOC will take care of java objects life cycle (Spring Beans)
+
+================
+Spring Context
+===============
+
+-> TO manage configurations in Spring application we will use Context Module
+
+-> It provides configuration support required for managing classes
+
+=============
+Spring AOP
+==============
+
+AOP : Aspect Oriented Programming
+
+-> AOP is used to seperate cross cutting logics in the application
+
+
+			Cross Cutting / Secondary / Helper Logics
+
+Ex : Security, transaction, Logging, Auditing & exception handling etc...
+
+==========================
+Spring DAO / Spring JDBC
+==========================
+
+-> Spring JDBC is extension for Java JDBC
+
+-> To simplify persistence logic development we can use Spring JDBC
+
+
+JDBC Logic
+-----------
+1. load driver
+2. get connection
+3. Create statement
+4. Execute query
+5. process result
+6. Close connection
+
+spring jdbc
+-----------
+1. Execute query
+2. process result
+
+=> Spring JDBC provided predefined classes to perform DB operations
+
+		Ex: JdbcTemplate, NamedJdbcTemplate etc...
+
+
+===========
+Spring ORM
+===========
+
+=> SPring ORM module is extension for existing ORM frameworks
+
+ORM - Object relational mappping
+
+=> To suppport ORM integrations we have Spring ORM module
+
+	Spring ORM = Spring + ORM Framework (Ex: Hibernate)
+
+
+
+Hibernate
+---------
+1. Create Config obj
+2. create session factory
+3. create session
+4. begin tx
+5. execute methods
+6. commit tx
+7. close session
+8. close sf
+
+spring orm
+-----------
+HibernateTemplate.save(entityObj)
+
+
+===============
+Spring Web MVC
+===============
+
+-> To develop both web & distributed (webservices) applications
+
+-> It is used to simplify web layer development in applications
+
+============
+Spring REST
+============
+
+-> To simplify REST API development
+
+
+
+
+
+
+
+
+
+
+
+
+
+💥 Download Ashok IT Mobile App 💥
+
+🔥 Android App Link (Ashok IT) : http://bit.ly/3Z2vXcO
+🔥 IOS App (MyInstitute) Link : https://apple.co/3IcEao3
+👉 ORG Code For IOS : CNFXJ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

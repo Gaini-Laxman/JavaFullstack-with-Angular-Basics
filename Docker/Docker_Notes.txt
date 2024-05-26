@@ -1,0 +1,16 @@
+
+Docker install
+
+curl -fsSL get.docker.com | /bin/bash
+
+Docker install verify
+
+sudo docker -v
+
+pull image 
+
+sudo docker pull ashokit/spring-boot-rest-api
+
+sudo docker images
+
+sudo docker run -p 9090:9090 ashokit/spring-boot-rest-api
